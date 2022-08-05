@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/dist/output.css">
+</head>
+<body class="m-0 p-0">
+
+
+  <div class="p-5"> 
+    <form action="" id="form-activity">
+      <label for="activty">Activity Title</label> <br>
+      <input type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs px-3" id="title" /> <br> <br>
+      <label for="desc">Description</label> <br>
+      <input type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs px-3" id="description" /> <br><br>
+      <button class="btn btn-primary px-10">Add</button>
+    </form>
+
+
+    <div class="activity mt-3 flex flex-wrap" id="card-activity">
+     
+      
+    </div>
+  </div>
+
+
+
+</body>
+
+<script>
+  const formTodo = document.getElementById('form-activity')
+  const titleActivity = document.getElementById('title')
+  const description = document.getElementById('description')
+  const cardActivity = document.getElementById('card-activity')
+  const listActivity = []
+  const months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"];
+  formTodo.onsubmit = (e) => {
+    e.preventDefault();
+
+    const title = titleActivity.value 
+    const desc = description.value
+    let currentDate = new Date()
+    month = months[currentDate.getMonth()],
+        day = currentDate.getDate(),
+        year = currentDate.getFullYear();
+    let activityObj = {
+      title,
+      desc,
+      date: `${day} ${month} ${year}`
+    }
+    listActivity.push(activityObj)
+    formTodo.reset()
+    showActivity()
+ 
+
+  }
+  const showActivity = () => {
+  cardActivity.innerHTML = listActivity.map(item => {
+    return `<div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">${item.title}</h2>
+          <h3>${item.desc}</h3>
+          <p>${item.date}</p>
+        </div>
+      </div>`
+  })
+
+  }
+  
+</script>
+</html>
