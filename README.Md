@@ -1,5 +1,10 @@
 ************
 Cara install
 ************
+
+
 clone repository kemudian
-> npm i or npm install
+```
+npm i or npm install
+
+```
