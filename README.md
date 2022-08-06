@@ -1,5 +1,5 @@
 
-##How to Install
+## How to Install
 
 clone repository then
 ```
